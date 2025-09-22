@@ -10,4 +10,7 @@ class CommentController extends Controller
     {
         return view('index');
     }
+    public function store()
+    {
+    }
 }

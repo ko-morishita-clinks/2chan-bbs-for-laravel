@@ -11,7 +11,7 @@ class StoreThreadRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,9 @@ class StoreThreadRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => ['required', 'string', 'max:50'],
+            'username' => ['required', 'string', 'max:30'],
+            'body'     => ['required', 'string', 'max:200'],
         ];
     }
 }
