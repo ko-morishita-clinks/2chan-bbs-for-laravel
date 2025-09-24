@@ -15,6 +15,11 @@ class Comment extends Model
         'body',
     ];
 
+    public static function createComment(array $data): self
+    {
+        return self::create($data);
+    }
+
     public function thread()
     {
         return $this->belongsTo(Thread::class);

@@ -19,6 +19,31 @@
         @empty
             <p class="text-gray-500">コメントはまだありません。</p>
         @endforelse
+
+        <form method="POST" action="{{ route('comments.store') }}" class="formWrapper mt-4">
+          @csrf
+          <div>
+              <label>名前：</label>
+              <input type="text" name="username" value="{{ old('username') }}" style="border: solid 1px black;">
+              @error('username')
+                <p style="color: red; font-size: 14px;">{{ $message }}</p>
+              @enderror
+              <div class="mt-2">
+                  <textarea class="commentTextArea" name="body">{{ old('body') }}</textarea>
+              </div>
+              @error('body')
+                <p style="color: red; font-size: 14px;">{{ $message }}</p>
+              @enderror
+
+              <input type="hidden" name="thread_id" value="{{ $thread->id }}">
+              <!-- 位置取得用（必要なら） -->
+              <input type="hidden" name="position" value="0">
+
+              <div class="mt-2">
+                  <input type="submit" value="書き込む" name="submitButton" style="border: solid 1px black;">
+              </div>
+          </div>
+        </form>
     </section>
 @empty
     <p class="text-gray-500">スレッドがまだありません。</p>

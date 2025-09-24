@@ -33,7 +33,6 @@ if (isset($_POST["submitButton"])) {
         <div class="threadWrapper">
             <div class="childWrapper">
                 @include('components.comment-section')
-                @include('components.comment-form')
             </div>
         </div>
         <div class="newThreadWrapper">
