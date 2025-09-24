@@ -31,6 +31,7 @@ if (isset($_POST["submitButton"])) {
         @include('layouts.header')
 
         <div class="threadWrapper">
+            @include('components.comment-error')
             <div class="childWrapper">
                 @include('components.comment-section')
             </div>

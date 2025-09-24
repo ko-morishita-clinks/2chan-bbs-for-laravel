@@ -25,15 +25,9 @@
           <div>
               <label>名前：</label>
               <input type="text" name="username" value="{{ old('username') }}" style="border: solid 1px black;">
-              @error('username')
-                <p style="color: red; font-size: 14px;">{{ $message }}</p>
-              @enderror
               <div class="mt-2">
                   <textarea class="commentTextArea" name="body">{{ old('body') }}</textarea>
               </div>
-              @error('body')
-                <p style="color: red; font-size: 14px;">{{ $message }}</p>
-              @enderror
 
               <input type="hidden" name="thread_id" value="{{ $thread->id }}">
               <!-- 位置取得用（必要なら） -->
