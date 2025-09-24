@@ -20,48 +20,41 @@
         @endif
     </head>
     <body>
-      <form method="POST" action="{{ route('thread.store') }}" class="space-y-4">
+      @include('layouts.header')
+      <div style="padding-left: 36px; color: blue;">
+        <h2 style="margin-top: 20px; margin-bottom: 0;">新規スレッド立ち上げ場</h2>
+      </div>
+      <form method="POST" action="{{ route('thread.store') }}" class="formWrapper">
         @csrf
 
-        {{-- スレッド名 --}}
         <div>
-            <label class="block font-semibold mb-1">スレッド名</label>
-            <input type="text" name="title" value="{{ old('title') }}"
-                   class="border border-black w-full p-2">
+            <label>スレッド名</label>
+            <input type="text" name="title" value="{{ old('title') }}" style="border: solid 1px black; margin-bottom: 10px;">
             @error('title')
                 <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
             @enderror
         </div>
 
-        {{-- 名前 --}}
         <div>
-            <label class="block font-semibold mb-1">名前</label>
-            <input type="text" name="username" value="{{ old('username') }}"
-                   class="border border-black w-full p-2">
+            <label>名前</label>
+            <input type="text" name="username" value="{{ old('username') }}" style="border: solid 1px black;">
             @error('username')
                 <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
             @enderror
         </div>
 
-        {{-- コメント本文 --}}
         <div>
-            <label class="block font-semibold mb-1">本文</label>
             <textarea name="body" rows="5"
-                      class="border border-black w-full p-2">{{ old('body') }}</textarea>
+                      class="border border-black commentTextArea">{{ old('body') }}</textarea>
             @error('body')
                 <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
             @enderror
         </div>
 
-        {{-- 送信ボタン --}}
         <div>
-            <button type="submit"
-                    class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
-                立ち上げ
-            </button>
+            <input type="submit" value="立ち上げ" name="threadSubmitButton" style="border: solid 1px black; padding: 5px;">
         </div>
       </form>
-      {{-- フォーム終了 --}}
 
       <div class="mt-6">
           <a href="/" class="text-blue-500 underline">戻る</a>
